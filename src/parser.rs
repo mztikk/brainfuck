@@ -19,23 +19,21 @@ impl Parser {
             .collect()
     }
 
-    pub fn parse_instructions(source: &[char]) -> Vec<Instruction> {
-        let mut result = Vec::new();
-
-        for opcode in source.iter() {
-            match opcode {
-                '>' => result.push(Instruction::FWD(1)),
-                '<' => result.push(Instruction::BAK(1)),
-                '+' => result.push(Instruction::INC(1)),
-                '-' => result.push(Instruction::DEC(1)),
-                '.' => result.push(Instruction::OUT),
-                ',' => result.push(Instruction::IN),
-                '[' => result.push(Instruction::IF),
-                ']' => result.push(Instruction::EIF),
-                _ => panic!("Unknown instruction {}", opcode),
-            }
+    fn opcode_to_instruction(opcode: &char) -> Instruction {
+        match opcode {
+            '>' => Instruction::FWD(1),
+            '<' => Instruction::BAK(1),
+            '+' => Instruction::INC(1),
+            '-' => Instruction::DEC(1),
+            '.' => Instruction::OUT,
+            ',' => Instruction::IN,
+            '[' => Instruction::IF,
+            ']' => Instruction::EIF,
+            _ => panic!("Unknown instruction {}", opcode),
         }
+    }
 
-        result
+    pub fn parse_instructions(source: &[char]) -> Vec<Instruction> {
+        source.iter().map(Parser::opcode_to_instruction).collect()
     }
 }
