@@ -1,4 +1,4 @@
-use brainfuck::{self, parser::Parser};
+use brainfuckm::{self, parser::Parser};
 use poetic::instruction::Instruction;
 
 #[test]
