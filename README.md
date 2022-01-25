@@ -2,7 +2,7 @@
 Rust library built on top of [poetic](https://github.com/mztikk/poetic) to parse [brainfuck](https://esolangs.org/wiki/Brainfuck).
 
 ## Tests
-There are tests for the parser and interpreter which you can run with:
+There are tests for the parser which you can run with:
 
 ```Rust
 cargo test
